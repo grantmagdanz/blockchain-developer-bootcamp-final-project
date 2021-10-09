@@ -2,7 +2,6 @@ import {
     Box,
     Flex,
     Text,
-    Button,
     Stack,
     Link,
     Popover,
@@ -12,7 +11,7 @@ import {
   } from '@chakra-ui/react';
   import ConnectWalletButton from './wallet/ConnectWalletButton';
   
-  export default function WithSubnavigation() {
+  export default function Navigation() {
   
     return (
       <Box>

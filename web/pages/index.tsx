@@ -1,10 +1,16 @@
 import type { NextPage } from 'next'
-import DesktopNav from "../components/navbar"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 import React from 'react'
+import MintButton from "../components/MintButton"
 
 const Home: NextPage = () => {
   return (
-     <><DesktopNav /></>
+     <>
+      <Header />
+      <MintButton/>
+      {/* <Footer /> */}
+     </>
   )
 }
 
