@@ -15,22 +15,7 @@ export default function ConnectWalletButton() {
 
   return account ? (
     <Box>
-      {/* <Box px="3">
-        <Text color="white" fontSize="md">
-          {etherBalance && parseFloat(formatEther(etherBalance)).toFixed(3)} ETH
-        </Text>
-      </Box> */}
-      <Button
-        display={{ base: 'none', md: 'inline-flex' }}
-        fontSize={'sm'}
-        fontWeight={600}
-        color={'white'}
-        bg={'pink.400'}
-        href={'#'}
-        _hover={{
-        bg: 'pink.300',
-        }}
-      >
+      <Button size="md" colorScheme="blue" fontSize="sm" fontWeight="bold">
         <Text color="white" fontSize="md" fontWeight="medium" mr="2">
           {account &&
             `${account.slice(0, 6)}...${account.slice(
@@ -41,18 +26,8 @@ export default function ConnectWalletButton() {
       </Button>
     </Box>
   ) : (
-    <Button 
-        display={{ base: 'none', md: 'inline-flex' }}
-        fontSize={'sm'}
-        fontWeight={600}
-        color={'white'}
-        bg={'pink.400'}
-        href={'#'}
-        _hover={{
-            bg: 'pink.400'
-        }}
-        onClick={handleConnect}>
-            Connect to a wallet
+    <Button size="md" colorScheme="blue" fontSize="sm" fontWeight="bold" onClick={handleConnect}>
+          Connect to a wallet
     </Button>
   );
 }

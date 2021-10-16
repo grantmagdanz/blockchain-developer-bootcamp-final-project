@@ -1,16 +1,13 @@
+import { Box } from '@chakra-ui/react'
 import type { NextPage } from 'next'
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import React from 'react'
-import MintButton from "../components/MintButton"
+import Mint from '../components/minting'
 
 const Home: NextPage = () => {
   return (
-     <>
-      <Header />
-      <MintButton/>
-      {/* <Footer /> */}
-     </>
+     <Box >
+        <Mint /> 
+     </Box>
   )
 }
 
