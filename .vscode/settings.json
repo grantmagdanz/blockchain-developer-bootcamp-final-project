@@ -1,0 +1,3 @@
+{
+    "solidity.packageDefaultDependenciesDirectory": "eth/node_modules"
+}
