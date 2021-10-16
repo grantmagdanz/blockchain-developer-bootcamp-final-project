@@ -2,11 +2,11 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ChakraProvider, ThemeProvider, theme, CSSReset } from "@chakra-ui/react"
 import { Web3ReactProvider } from '@web3-react/core'
-import Web3 from 'web3'
+import { ethers } from "ethers";
 import Header from "../components/header"
 
 function getLibrary(provider: any) {
-  return new Web3(provider)
+  return new ethers.providers.Web3Provider(provider)
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
