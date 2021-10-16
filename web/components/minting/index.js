@@ -23,7 +23,7 @@ const Minting = () => {
           Bitcoin for the gallery
         </Heading>
         <Text mt="4" fontSize="lg">
-          No crypto story is complete without Bitcion.
+          No crypto story is complete without Bitcoin.
         </Text>
         <MintButton />
       </Box>

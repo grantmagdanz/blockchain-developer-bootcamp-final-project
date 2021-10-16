@@ -1,11 +1,8 @@
 import { NextPage } from "next";
+import ComingSoon from '../components/ComingSoon'
 
 const About: NextPage = () => {
-    return (
-       <>
-        About
-       </>
-    )
+    return <ComingSoon />
   }
   
   export default About;
