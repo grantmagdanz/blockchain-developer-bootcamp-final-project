@@ -3,7 +3,7 @@ import { injected } from "./Connector"
 import { Button, Box, Text } from "@chakra-ui/react"
 
 export default function ConnectWalletButton() {
-  const { active, account, library, connector, activate, deactivate } = useWeb3React()
+  const { account, activate, error } = useWeb3React()
 
   async function handleConnect() {
     try {
@@ -11,6 +11,11 @@ export default function ConnectWalletButton() {
     } catch (ex) {
       console.log(ex)
     }
+  }
+
+  if (error) {
+    console.log(error)
+    return <Text color="red" fontSize="md" fontWeight="bold">ERROR</Text>
   }
 
   return account ? (
