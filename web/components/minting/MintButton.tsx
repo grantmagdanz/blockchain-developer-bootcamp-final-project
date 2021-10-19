@@ -1,7 +1,6 @@
 import { Button } from "@chakra-ui/react"
 import { useWeb3React } from "@web3-react/core"
-import { ethers } from 'ethers';
-import { useGlassContract } from '../../glass_contract/contract'
+import { useGlassContract } from '../../contracts/glass/contract'
 
 export default function MintButton(props: any) {
     const { active, contract } = useGlassContract()

@@ -2,10 +2,13 @@ import { Box, Heading, Text, Flex } from '@chakra-ui/react'
 import MintButton from './MintButton'
 import ConnectWalletButton from '../wallet/ConnectWalletButton'
 import { useWeb3React } from "@web3-react/core"
-
+import { useWBTCContract } from "../../contracts/wbtc/contract"
 
 const Minting = () => {
   const { active } = useWeb3React()
+  const wbtc = useWBTCContract()
+
+  console.log(wbtc)
 
   return (
     <Flex 

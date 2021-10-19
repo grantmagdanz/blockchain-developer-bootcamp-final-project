@@ -14,8 +14,6 @@ export default function ConnectWalletButton(props: any) {
     }
   }
 
-  console.log(props)
-
   return (
     <Button {...props} onClick={handleConnect}>
           {props.text ?? "Connect to a wallet"}
