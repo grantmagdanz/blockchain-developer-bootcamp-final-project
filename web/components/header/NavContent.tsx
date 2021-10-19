@@ -15,7 +15,7 @@ import { NavMenu } from './NavMenu'
 import { Submenu } from './Submenu'
 import { ToggleButton } from './ToggleButton'
 import { links } from './_data'
-import ConnectWalletButton from '../wallet/ConnectWalletButton'
+import WalletButton from '../wallet/WalletButton'
 
 const MobileNavContext = (props: FlexProps) => {
   const { isOpen, onToggle } = useDisclosure()
@@ -29,9 +29,7 @@ const MobileNavContext = (props: FlexProps) => {
           <Logo />
         </Box>
         <Box visibility={{ base: 'hidden', sm: 'visible' }}>
-          <Button as="a" colorScheme="blue">
-            Get Started
-          </Button>
+          <WalletButton />
         </Box>
       </Flex>
       <NavMenu animate={isOpen ? 'open' : 'closed'}>
@@ -66,7 +64,7 @@ const DesktopNavContent = (props: FlexProps) => {
             )}
           </Box>
         ))}
-        <ConnectWalletButton />
+        <WalletButton />
       </HStack>
     </Flex>
   )

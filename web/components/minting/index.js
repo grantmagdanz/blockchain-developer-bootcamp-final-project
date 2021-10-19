@@ -1,7 +1,12 @@
 import { Box, Heading, Text, Flex } from '@chakra-ui/react'
 import MintButton from './MintButton'
+import ConnectWalletButton from '../wallet/ConnectWalletButton'
+import { useWeb3React } from "@web3-react/core"
+
 
 const Minting = () => {
+  const { active } = useWeb3React()
+
   return (
     <Flex 
       as="nav"
@@ -25,7 +30,7 @@ const Minting = () => {
         <Text mt="4" fontSize="lg">
           No crypto story is complete without Bitcoin.
         </Text>
-        <MintButton />
+        { active ? <MintButton mt="8" as="a" size="lg" colorScheme="blue" fontWeight="bold"/> : <ConnectWalletButton text="Connect wallet" mt="8" as="a" size="lg" colorScheme="blue" fontWeight="bold" />}
       </Box>
     </Flex>
   )

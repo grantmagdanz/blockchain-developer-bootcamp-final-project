@@ -1,9 +1,10 @@
 import { useWeb3React } from "@web3-react/core"
 import { injected } from "./Connector"
 import { Button, Box, Text } from "@chakra-ui/react"
+import ConnectedWalletButton from "./ConnectedWalletButton"
 
-export default function ConnectWalletButton() {
-  const { account, activate, error } = useWeb3React()
+export default function ConnectWalletButton(props: any) {
+  const { activate } = useWeb3React()
 
   async function handleConnect() {
     try {
@@ -13,26 +14,11 @@ export default function ConnectWalletButton() {
     }
   }
 
-  if (error) {
-    console.log(error)
-    return <Text color="red" fontSize="md" fontWeight="bold">ERROR</Text>
-  }
+  console.log(props)
 
-  return account ? (
-    <Box>
-      <Button size="md" colorScheme="blue" fontSize="sm" fontWeight="bold">
-        <Text color="white" fontSize="md" fontWeight="medium" mr="2">
-          {account &&
-            `${account.slice(0, 6)}...${account.slice(
-              account.length - 4,
-              account.length
-            )}`}
-        </Text>
-      </Button>
-    </Box>
-  ) : (
-    <Button size="md" colorScheme="blue" fontSize="sm" fontWeight="bold" onClick={handleConnect}>
-          Connect to a wallet
+  return (
+    <Button {...props} onClick={handleConnect}>
+          {props.text ?? "Connect to a wallet"}
     </Button>
-  );
+  )
 }
