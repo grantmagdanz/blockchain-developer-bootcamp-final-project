@@ -37,7 +37,8 @@ const WBTCFaucet: NextPage = () => {
     }
 
     const onResetClick = async () => {
-      await contract.approve(CONTRACT_ADDRESS, 0)
+      const tx = await contract.approve(CONTRACT_ADDRESS, 0)
+      tx.wait().then(() => getAllowance())
     }
 
     return (
