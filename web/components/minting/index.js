@@ -3,12 +3,53 @@ import MintButton from './MintButton'
 import ConnectWalletButton from '../wallet/ConnectWalletButton'
 import { useWeb3React } from "@web3-react/core"
 import { useWBTCContract } from "../../contracts/wbtc/contract"
+import ApproveButton from './ApproveButton'
+import { useState, useEffect } from 'react'
+import { CONTRACT_ADDRESS } from '../../contracts/glass/contract'
+import { WBTC_MINT_AMOUNT } from '../../constants'
 
 const Minting = () => {
-  const { active } = useWeb3React()
-  const wbtc = useWBTCContract()
+  const { active, account } = useWeb3React()
+  const { contract } = useWBTCContract()
+  const [ buttonState, setButtonState ] = useState(active ? 'APPROVE_SPENDING' : 'CONNECT_WALLET') 
 
-  console.log(wbtc)
+  const updateButtonState = async () => {
+    if (!active) {
+      setButtonState('CONNECT_WALLET')
+      return
+    }
+    const allowance = await contract.allowance(account, CONTRACT_ADDRESS)
+    if (allowance < WBTC_MINT_AMOUNT) {
+      setButtonState('APPROVE_SPENDING')
+    } else {
+      setButtonState('MINT')
+    }
+  }
+  
+  useEffect(() => {
+    updateButtonState()
+  }, [active])
+
+  const getButton = () => {
+    const buttonProps = {
+      mt: "8",
+      as: "a",
+      size: "lg",
+      colorScheme: "blue",
+      fontWeight: "bold"
+    }
+    switch (buttonState) {
+      case 'CONNECT_WALLET':
+        return <ConnectWalletButton text="Connect wallet" {...buttonProps} />
+      case 'APPROVE_SPENDING':
+        return <ApproveButton onClick={updatebuttonState} {...buttonProps} />
+      case 'MINT':
+        return <MintButton {...buttonProps} />
+      default:
+        return <Text color="red" fontSize="md" fontWeight="bold">ERROR</Text>
+        console.log(`BAD BUTTON STATE ${buttonState}`)
+    }
+  }
 
   return (
     <Flex 
@@ -33,7 +74,7 @@ const Minting = () => {
         <Text mt="4" fontSize="lg">
           No crypto story is complete without Bitcoin.
         </Text>
-        { active ? <MintButton mt="8" as="a" size="lg" colorScheme="blue" fontWeight="bold"/> : <ConnectWalletButton text="Connect wallet" mt="8" as="a" size="lg" colorScheme="blue" fontWeight="bold" />}
+        { getButton() }
       </Box>
     </Flex>
   )

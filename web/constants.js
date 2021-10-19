@@ -1,0 +1,1 @@
+export const WBTC_MINT_AMOUNT = 1 * 10 ** 8
