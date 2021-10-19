@@ -19,6 +19,7 @@ const Minting = () => {
       return
     }
     const allowance = await contract.allowance(account, CONTRACT_ADDRESS)
+    console.log(`allowance: ${allowance}`)
     if (allowance < WBTC_MINT_AMOUNT) {
       setButtonState('APPROVE_SPENDING')
     } else {
@@ -42,7 +43,7 @@ const Minting = () => {
       case 'CONNECT_WALLET':
         return <ConnectWalletButton text="Connect wallet" {...buttonProps} />
       case 'APPROVE_SPENDING':
-        return <ApproveButton onClick={updatebuttonState} {...buttonProps} />
+        return <ApproveButton onClick={updateButtonState} {...buttonProps} />
       case 'MINT':
         return <MintButton {...buttonProps} />
       default:

@@ -1,6 +1,5 @@
 import { useWeb3React } from "@web3-react/core"
-import { injected } from "./Connector"
-import { Button, Box, Text } from "@chakra-ui/react"
+import { Text } from "@chakra-ui/react"
 import ConnectedWalletButton from "./ConnectedWalletButton"
 import ConnectWalletButton from "./ConnectWalletButton"
 

@@ -12,12 +12,12 @@ export default function ApproveButton(props: any) {
             alert("connect wallet")
             return
         }
-        await contract.approve(CONTRACT_ADDRESS, WBTC_MINT_AMOUNT)
-        props.onClick()
+        const tx = await contract.approve(CONTRACT_ADDRESS, WBTC_MINT_AMOUNT)
+        tx.wait().then(() => { props.onClick() })
     }
 
 
     return (
-        <Button {...props} onClick={onClick}>Approve WBTC spending</Button>
+        <Button {...props} onClick={onClick}>Approve wBTC spending</Button>
     )
 }
