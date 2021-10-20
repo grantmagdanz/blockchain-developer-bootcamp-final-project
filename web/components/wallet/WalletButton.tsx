@@ -9,8 +9,6 @@ export default function WalletButton() {
   if (error) {
     console.log(error)
     return <Text color="red" fontSize="md" fontWeight="bold">ERROR</Text>
-  } else if (!active) {
-    console.log("Displaying ConnectedWalletButton without an account")
   }
 
   return account ? <ConnectedWalletButton/> : <ConnectWalletButton size="md" colorScheme="blue" fontSize="sm" fontWeight="bold" />
